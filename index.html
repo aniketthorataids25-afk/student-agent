@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Companion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">SC</span><div><b>Study</b> Companion<small>AI Learning Dashboard</small></div></div>
+    <nav>
+      <button class="nav active" data-view="dashboard">⌂ <span>Dashboard</span></button>
+      <button class="nav" data-view="subjects">▦ <span>Subjects</span></button>
+      <button class="nav" data-view="plan">✓ <span>Study Plan</span></button>
+      <button class="nav" data-view="data">⚙ <span>Enter Results</span></button>
+    </nav>
+    <div class="sidebar-note"><strong>3 agents working</strong><br><span>Tracker · Predictor · Commander</span></div>
+  </aside>
+
+  <main>
+    <header>
+      <div>
+        <p class="eyebrow">STUDENT DASHBOARD</p>
+        <h1 id="page-title">Good morning 👋</h1>
+        <p class="muted">Your learning progress, risks and next actions in one place.</p>
+      </div>
+      <button class="refresh" onclick="loadDemo()">↻ Refresh analysis</button>
+    </header>
+
+    <section id="dashboard" class="view">
+      <div class="cards">
+        <article class="card"><span>Overall recent score</span><strong id="overall">—</strong><small>Across all subjects</small></article>
+        <article class="card"><span>Subjects at risk</span><strong id="risk">—</strong><small>Need immediate attention</small></article>
+        <article class="card"><span>Study time today</span><strong id="minutes">—</strong><small>AI recommended</small></article>
+        <article class="card"><span>Subjects tracked</span><strong id="count">—</strong><small>Current dataset</small></article>
+      </div>
+
+      <div class="grid">
+        <section class="panel wide"><div class="panel-head"><h2>Performance trend</h2><span class="pill">Latest quiz history</span></div><canvas id="trendChart"></canvas></section>
+        <section class="panel"><div class="panel-head"><h2>Priority</h2></div><div id="priority-list"></div></section>
+      </div>
+
+      <section class="panel"><div class="panel-head"><h2>Subject health</h2><span class="muted">Tracker + Predictor</span></div><div id="subject-table"></div></section>
+    </section>
+
+    <section id="subjects" class="view hidden"><section class="panel"><div class="panel-head"><h2>Subjects</h2></div><div id="subject-cards" class="subject-grid"></div></section></section>
+    <section id="plan" class="view hidden"><section class="panel"><div class="panel-head"><h2>Today's study plan</h2><span class="pill">Commander Agent</span></div><div id="full-plan"></div></section></section>
+    <section id="data" class="view hidden"><section class="panel"><div class="panel-head"><h2>Enter quiz results</h2><span class="muted">One line per subject</span></div>
+      <p class="muted">Format: <b>Mathematics: 82, 74, 65, 58</b></p>
+      <textarea id="input-data" rows="9">Mathematics: 82, 74, 65, 58
+Physics: 88, 90, 87, 91
+History: 70, 76, 72, 73
+Computer Science: 78, 81, 84, 86</textarea>
+      <button class="primary" onclick="analyzeInput()">Analyze results</button>
+      <p id="error" class="error"></p>
+    </section></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
